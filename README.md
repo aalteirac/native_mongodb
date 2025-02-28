@@ -1,5 +1,9 @@
 ## Introduction
 
+Simple, basic test to run MongoDB + Mongo-Express in Snowflake Native App framework
+
+NOT FOR PROD :-)
+
 Run init on the target account, change the role name if needed
 
 ## Demo
