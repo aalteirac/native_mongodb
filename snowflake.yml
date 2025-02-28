@@ -1,0 +1,33 @@
+definition_version: '2'
+
+entities:
+  pkg:
+    type: application package
+    identifier: MONGO_PKG
+    stage: app_src.stage
+    manifest: app/manifest.yml
+    artifacts:
+      - src: app/*
+        dest: ./
+      - service/mongo.yaml
+    meta:
+      role: demo_role
+      warehouse: DEMO_WH
+  app:
+    type: application
+    identifier: '"MONGODB_MONGO_EXPRESS"'
+    from:
+      target: pkg
+    debug: false
+    meta:
+      role: demo_role
+      warehouse: DEMO_WH
+
+
+# Local test
+
+# docker run --name mongodb -p 27017:27017 -d mongodb/mongodb-community-server:latest
+# Get the container IP:
+# docker inspect mongodb
+# Change the ip accordingly:
+# docker run --name mongofront -d --rm -p 8081:8081 --env ME_CONFIG_SITE_BASEURL="/ui" --env ME_CONFIG_MONGODB_URL="mongodb://172.17.0.2:27017" --env ME_CONFIG_BASICAUTH_ENABLED="false" --env ME_CONFIG_MONGODB_ENABLE_ADMIN="true" mongo-express:latest

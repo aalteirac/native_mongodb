@@ -1,0 +1,15 @@
+spec:
+  containers:
+  - name: mongo
+    image: /mongo_db/mongo_sc/mongo_repo/mongodb:v0
+  - name: mongofront
+    image: /mongo_db/mongo_sc/mongo_repo/mongofront:v0
+    env:
+      ME_CONFIG_MONGODB_URL: mongodb://127.0.0.1:27017
+      ME_CONFIG_BASICAUTH: false
+      ME_CONFIG_BASICAUTH_ENABLED: false
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: true
+  endpoints:
+    - name: ui
+      port: 8081
+      public: true
